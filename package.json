@@ -1,0 +1,57 @@
+{
+	"name": "alfred-icons",
+	"version": "0.0.0",
+	"description": "Quick search, preview directly in alfred any icons by the thenounproject.com service.",
+	"license": "MIT",
+	"repository": "bikenik/alfred-icons",
+	"author": {
+		"name": "bikenik",
+		"email": "bikeniks@gmail.com",
+		"url": "http://bikenik.org"
+	},
+	"engines": {
+		"node": ">=4"
+	},
+	"scripts": {
+		"test": "xo && ava",
+		"postinstall": "alfy-init",
+		"preuninstall": "alfy-cleanup"
+	},
+	"files": [
+		"index.js",
+		"icon.png",
+		"info.plist",
+		"api",
+		"config"
+	],
+	"keywords": [
+		"alfred",
+		"workflow",
+		"alfy"
+	],
+	"dependencies": {
+		"alfy": "^0.8.0",
+		"got": "^9.3.2",
+		"oauth-1.0a": "^2.2.5",
+		"p-throttle": "^2.0.0",
+		"request": "^2.88.0",
+		"request-promise": "^4.2.2",
+		"stream-to-promise": "^2.2.0"
+	},
+	"devDependencies": {
+		"alfy-test": "^0.3.0",
+		"ava": "^0.25.0",
+		"xo": "^0.23.0"
+	},
+	"xo": {
+		"space": false,
+		"semicolon": false,
+		"properties": false,
+		"no-trailing-spaces": [
+			"error",
+			{
+				"skipBlankLines": true
+			}
+		]
+	}
+}

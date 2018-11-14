@@ -1,0 +1,315 @@
+{
+	"info": {
+		"_postman_id": "62358874-fbe4-47bb-8eb4-8d7eb2cf6a0a",
+		"name": "The-noun-project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "icon : Operations on icon endpoints",
+			"item": [
+				{
+					"name": "GET /icon/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api.thenounproject.com/icon/24574",
+							"protocol": "https",
+							"host": [
+								"api",
+								"thenounproject",
+								"com"
+							],
+							"path": [
+								"icon",
+								"24574"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "### Returns a single icon"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "icons : Operations on icons endpoints",
+			"item": [
+				{
+					"name": "GET /icons/{term}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api.thenounproject.com/icons/coffee?limit=13&page=1",
+							"protocol": "https",
+							"host": [
+								"api",
+								"thenounproject",
+								"com"
+							],
+							"path": [
+								"icons",
+								"coffee"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "13"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						},
+						"description": "## Returns a list of icons"
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "4afc63fd-200b-48bc-a54a-360e46217359",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "25fb8847-b1e4-4a5c-90f4-5d86dbc13ffa",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "user : Operations on user endpoints",
+			"item": [
+				{
+					"name": "GET /user/{user_id}/collections",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api.thenounproject.com/user/1886/collections",
+							"protocol": "https",
+							"host": [
+								"api",
+								"thenounproject",
+								"com"
+							],
+							"path": [
+								"user",
+								"1886",
+								"collections"
+							]
+						},
+						"description": "## Returns a list of collections associated with a user"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "collection : Operations on collection endpoints",
+			"item": [
+				{
+					"name": "GET /collection/{id}/icons",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://api.thenounproject.com/collection/19/icons?limit=13&page=1",
+							"protocol": "http",
+							"host": [
+								"api",
+								"thenounproject",
+								"com"
+							],
+							"path": [
+								"collection",
+								"19",
+								"icons"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "13"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						},
+						"description": "## Returns a list of icons associated with a collection"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Base url",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://thenounproject.com/search/json/icon/?q=coffee&page=2&limit=25&raw_html=false&sort=date",
+					"protocol": "https",
+					"host": [
+						"thenounproject",
+						"com"
+					],
+					"path": [
+						"search",
+						"json",
+						"icon",
+						""
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "coffee"
+						},
+						{
+							"key": "page",
+							"value": "2"
+						},
+						{
+							"key": "limit",
+							"value": "25"
+						},
+						{
+							"key": "raw_html",
+							"value": "false"
+						},
+						{
+							"key": "sort",
+							"value": "date"
+						}
+					]
+				},
+				"description": "## (without API)"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "oauth1",
+		"oauth1": [
+			{
+				"key": "version",
+				"value": "1.0",
+				"type": "string"
+			},
+			{
+				"key": "consumerKey",
+				"value": "{{key}}",
+				"type": "string"
+			},
+			{
+				"key": "consumerSecret",
+				"value": "{{secret}}",
+				"type": "string"
+			},
+			{
+				"key": "token",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "addParamsToHeader",
+				"value": true,
+				"type": "boolean"
+			},
+			{
+				"key": "tokenSecret",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "signatureMethod",
+				"value": "HMAC-SHA1",
+				"type": "string"
+			},
+			{
+				"key": "timestamp",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "nonce",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "realm",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "addEmptyParamsToSign",
+				"value": false,
+				"type": "boolean"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "7d5e64a2-1ede-4a24-aefb-5a22dd367411",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "92b665b9-7f9d-4c56-8fe4-00866a9ac6be",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
