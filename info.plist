@@ -211,7 +211,7 @@
 				<key>modifiersubtext</key>
 				<string></string>
 				<key>vitoclose</key>
-				<false/>
+				<true/>
 			</dict>
 		</array>
 		<key>E734A788-6CD8-477D-93D0-FC468E28FBDB</key>
@@ -460,25 +460,6 @@ fi
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>inputstring</key>
-				<string>{var:searchMode}</string>
-				<key>matchcasesensitive</key>
-				<true/>
-				<key>matchmode</key>
-				<integer>0</integer>
-				<key>matchstring</key>
-				<string>collection</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.filter</string>
-			<key>uid</key>
-			<string>7AC899A2-49E4-4A6D-AE42-86DB51C0D7A4</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>json</key>
 				<string>{
   "alfredworkflow" : {
@@ -492,6 +473,25 @@ fi
 			<string>alfred.workflow.utility.json</string>
 			<key>uid</key>
 			<string>2DC0BF10-A6D6-4B4B-A08E-E46E1B5EF007</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>inputstring</key>
+				<string>{var:searchMode}</string>
+				<key>matchcasesensitive</key>
+				<true/>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>matchstring</key>
+				<string>collection</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.filter</string>
+			<key>uid</key>
+			<string>7AC899A2-49E4-4A6D-AE42-86DB51C0D7A4</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -750,7 +750,7 @@ SEARCH BY TAGS</string>
 		<string></string>
 	</dict>
 	<key>version</key>
-	<string>0.0.2</string>
+	<string>0.0.3</string>
 	<key>webaddress</key>
 	<string>https://github.com/bikeNik/alfred-icons#readme</string>
 </dict>
