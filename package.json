@@ -1,6 +1,6 @@
 {
 	"name": "alfred-icons",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "Quick search, preview directly in alfred any icons by the thenounproject.com service.",
 	"license": "MIT",
 	"repository": "bikenik/alfred-icons",
