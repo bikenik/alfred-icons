@@ -10,7 +10,7 @@
 		"url": "http://bikenik.org"
 	},
 	"engines": {
-		"node": ">=4"
+		"node": ">=7.6"
 	},
 	"scripts": {
 		"test": "xo && ava",
