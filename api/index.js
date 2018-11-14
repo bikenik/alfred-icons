@@ -68,15 +68,25 @@ module.exports = (data, page) => {
 		})
 	}
 	items.push(...data.icons.map(x => {
+		const tags = `\t\t${x.tags.map(x => x.slug).join(', ')}`
 		const item = new Render('List of Search',
 			'title', 'arg', 'subtitle', 'icon', 'quicklookurl', 'variables', 'mods')
 		item.title = x.uploader.name
-		item.subtitle = x.collections && x.collections.length > 0 ? '⛓ ' + x.collections.map(y => `${y.name} / ${y.date_created.replace(/(^.*?)\s.*/g, `$1`)}`)[0] : 'no collection'
+		item.subtitle = x.collections && x.collections.length > 0 ? '🧰 ' + x.collections.map(y => `${y.name} / ${y.date_created.replace(/(^.*?)\s.*/g, `$1`)}`)[0] + tags : process.env.searchMode === 'collection' ? data.collection.name + tags : 'no collection' + tags
 		item.arg = `https://thenounproject.com${x.permalink}`
 		item.icon = `./tmp/${x.preview_url_84.replace(/.*\/(\d.*)/, `$1`)}`
 		item.quicklookurl = x.attribution_preview_url
 		item.variables = {
 			action: 'regular'
+		}
+		item.mods = {
+			cmd: {
+				subtitle: 'Choose collection by tag',
+				arg: JSON.stringify(x.tags),
+				variables: {
+					searchMode: 'tags'
+				}
+			}
 		}
 		if (x.collections && x.collections.length > 0) {
 			item.mods = {

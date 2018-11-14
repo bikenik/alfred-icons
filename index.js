@@ -12,14 +12,17 @@ const Render = require('./config/engine')
 const {key, secret, rows} = process.env
 const page = process.argv[3] ? process.argv[3] : '1'
 const searchMode = process.argv[4] ? process.argv[4] : 'regular'
-const {collectionId} = process.env
+const {collectionId, collectionSlug} = process.env
 
 let endPoint
 if (searchMode === 'regular') {
 	endPoint = `http://api.thenounproject.com/icons/${alfy.input}?limit=${rows}&page=${page}`
 }
 if (searchMode === 'collection') {
-	endPoint = `http://api.thenounproject.com/collection/${collectionId.toString()}/icons?limit=${rows}&page=${page}`
+	endPoint = `http://api.thenounproject.com/collection/${collectionId}/icons?limit=${rows}&page=${page}`
+}
+if (searchMode === 'tags') {
+	endPoint = `http://api.thenounproject.com/collection/${collectionSlug}/icons?limit=${rows}&page=${page}`
 }
 
 const oauth = oAuth({
@@ -49,6 +52,14 @@ got(url, {
 		item.title = `You need 'key' and 'secret' to get acces`
 		item.subtitle = `Hit ↵ to go 'noun project' documentation and get theire`
 		item.arg = 'https://api.thenounproject.com/getting_started.html#creating-an-api-key'
+		alfy.output([item.getProperties()])
+	} else if (/<p>No icons found for term/.test(error.body)) {
+		const item = new Render('not found this icon',
+			'title', 'subtitle', 'autocomplete', 'valid')
+		item.title = `No icons found for term "${alfy.input}"`
+		item.subtitle = 'hit ↵ and try another query'
+		item.autocomplete = ''
+		item.valid = false
 		alfy.output([item.getProperties()])
 	} else if (/<p>The requested URL was not found/.test(error.body)) {
 		const item = new Render('initial typing',
