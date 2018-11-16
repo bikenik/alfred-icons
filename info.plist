@@ -33,16 +33,6 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>DEF4E3B6-A355-4EBC-903F-D2271C7B4A93</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
 		</array>
 		<key>60939606-77AA-4244-A6E9-83FEB4035744</key>
 		<array>
@@ -293,7 +283,7 @@
 			<key>config</key>
 			<dict>
 				<key>browser</key>
-				<string></string>
+				<string>com.google.Chrome</string>
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
@@ -328,20 +318,13 @@
 				<key>queuedelayimmediatelyinitially</key>
 				<true/>
 				<key>queuedelaymode</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>queuemode</key>
 				<integer>2</integer>
 				<key>runningsubtext</key>
 				<string>Searching ...</string>
 				<key>script</key>
-				<string>if [ -e $PWD/tmp/ ]
-then
-rm -r $PWD/tmp/
-mkdir $PWD/tmp/
-else
-mkdir $PWD/tmp/
-fi
-./node_modules/.bin/run-node index.js "$1" "$page" "$searchMode"
+				<string>./node_modules/.bin/run-node index.js "$1" "$page" "$searchMode"
 </string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -498,35 +481,6 @@ fi
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>if [ -e $PWD/tmp/ ]
-then
-rm -r $PWD/tmp/
-mkdir $PWD/tmp/
-else
-mkdir $PWD/tmp/
-fi</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>DEF4E3B6-A355-4EBC-903F-D2271C7B4A93</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -598,7 +552,8 @@ fi</string>
     "config" : {
     },
     "variables" : {
-      "tags" : "{query}"
+      "tags" : "{query}",
+      "page" : "1"
     }
   }
 }</string>
@@ -660,7 +615,7 @@ fi</string>
 		<key>85C05F14-3110-4112-BF34-C5BBCC6507B4</key>
 		<dict>
 			<key>xpos</key>
-			<integer>150</integer>
+			<integer>250</integer>
 			<key>ypos</key>
 			<integer>530</integer>
 		</dict>
@@ -674,7 +629,7 @@ fi</string>
 		<key>9BFC3930-C98F-4032-BD35-3371A6C42FCA</key>
 		<dict>
 			<key>xpos</key>
-			<integer>270</integer>
+			<integer>320</integer>
 			<key>ypos</key>
 			<integer>530</integer>
 		</dict>
@@ -712,16 +667,6 @@ SEARCH BY COLLECTION</string>
 			<key>ypos</key>
 			<integer>330</integer>
 		</dict>
-		<key>DEF4E3B6-A355-4EBC-903F-D2271C7B4A93</key>
-		<dict>
-			<key>note</key>
-			<string>...
-DELETE TMP ICONS</string>
-			<key>xpos</key>
-			<integer>700</integer>
-			<key>ypos</key>
-			<integer>500</integer>
-		</dict>
 		<key>E17C75D9-A1BB-4E43-B8F6-381132F5D957</key>
 		<dict>
 			<key>note</key>
@@ -750,7 +695,7 @@ SEARCH BY TAGS</string>
 		<string></string>
 	</dict>
 	<key>version</key>
-	<string>0.0.4</string>
+	<string>0.0.5</string>
 	<key>webaddress</key>
 	<string>https://github.com/bikeNik/alfred-icons#readme</string>
 </dict>

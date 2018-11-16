@@ -7,8 +7,8 @@ const items = alfy.matches('', tags, 'slug')
 	.map(x => ({
 		title: x.slug,
 		variables: {
-			collectionSlug: x.slug,
-			searchMode: 'tags'
+			collection: JSON.stringify(x),
+			searchMode: 'by slug'
 		}
 	}))
 alfy.output(items)

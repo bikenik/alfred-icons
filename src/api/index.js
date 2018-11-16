@@ -7,7 +7,6 @@ const request = require('request-promise')
 const streamToPromise = require('stream-to-promise')
 
 const Render = require('../config/engine')
-const WorkflowError = require('../config/error')
 
 const rmDir = function (dirPath) {
 	let files
@@ -33,13 +32,18 @@ const rmDir = function (dirPath) {
 }
 const dir = './tmp'
 rmDir(dir)
-if (alfy.input === 'snth') {
-	throw new WorkflowError('Variable does not exist', {
-		autocomplete: '!set '
-	})
-}
 
 module.exports = (data, page) => {
+	const cmdModsForTags = x => {
+		return {
+			subtitle: 'Choose collections by tag',
+			arg: JSON.stringify(x.tags),
+			variables: {
+				searchMode: 'tags'
+			}
+		}
+	}
+
 	if (!fs.existsSync(dir)) {
 		fs.mkdirSync(dir)
 	}
@@ -72,7 +76,7 @@ module.exports = (data, page) => {
 		const item = new Render('List of Search',
 			'title', 'arg', 'subtitle', 'icon', 'quicklookurl', 'variables', 'mods')
 		item.title = x.uploader.name
-		item.subtitle = x.collections && x.collections.length > 0 ? '🧰 ' + x.collections.map(y => `${y.name} / ${y.date_created.replace(/(^.*?)\s.*/g, `$1`)}`)[0] + tags : process.env.searchMode === 'collection' ? data.collection.name + tags : 'no collection' + tags
+		item.subtitle = x.collections && x.collections.length > 0 ? '🧰 ' + x.collections.map(y => `${y.name} / ${y.date_created.replace(/(^.*?)\s.*/g, `$1`)}`)[0] + tags : data.collection ? `[${data.collection.name.toUpperCase()}]` + tags : 'no collection' + tags
 		item.arg = `https://thenounproject.com${x.permalink}`
 		item.icon = `./tmp/${x.preview_url_84.replace(/.*\/(\d.*)/, `$1`)}`
 		item.quicklookurl = x.attribution_preview_url
@@ -80,13 +84,7 @@ module.exports = (data, page) => {
 			action: 'regular'
 		}
 		item.mods = {
-			cmd: {
-				subtitle: 'Choose collection by tag',
-				arg: JSON.stringify(x.tags),
-				variables: {
-					searchMode: 'tags'
-				}
-			}
+			cmd: cmdModsForTags(x)
 		}
 		if (x.collections && x.collections.length > 0) {
 			item.mods = {
@@ -94,10 +92,11 @@ module.exports = (data, page) => {
 					subtitle: 'Go to this collection',
 					variables: {
 						searchMode: 'collection',
-						collectionId: x.collections.map(y => y.id)[0].toString(),
+						collection: x.collections.map(y => y.id)[0].toString(),
 						page: '1'
 					}
-				}
+				},
+				cmd: cmdModsForTags(x)
 			}
 		}
 		return item.getProperties()

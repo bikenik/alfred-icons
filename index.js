@@ -5,24 +5,38 @@ const crypto = require('crypto')
 const alfy = require('alfy')
 const got = require('got')
 const oAuth = require('oauth-1.0a')
-const api = require('./api')
-const WorkflowError = require('./config/error')
-const Render = require('./config/engine')
+const api = require('./src/api')
+const WorkflowError = require('./src/config/error')
+const Render = require('./src/config/engine')
 
 const {key, secret, rows} = process.env
 const page = process.argv[3] ? process.argv[3] : '1'
-const searchMode = process.argv[4] ? process.argv[4] : 'regular'
-const {collectionId, collectionSlug} = process.env
+let searchMode = process.argv[4] ? process.argv[4] : 'regular'
+let {collection} = process.env
+
+let collectionObj
+const collectionSearchBol = (process.env.collection && searchMode === 'by id') || searchMode === 'by slug'
+if (collectionSearchBol) {
+	collectionObj = JSON.parse(collection)
+	switch (searchMode) {
+		case 'by id':
+			collection = collectionObj.id
+			searchMode = 'by id'
+			break
+		case 'by slug':
+			collection = collectionObj.slug
+			searchMode = 'by slug'
+			break
+		default:
+			break
+	}
+}
 
 let endPoint
 if (searchMode === 'regular') {
-	endPoint = `http://api.thenounproject.com/icons/${alfy.input}?limit=${rows}&page=${page}`
-}
-if (searchMode === 'collection') {
-	endPoint = `http://api.thenounproject.com/collection/${collectionId}/icons?limit=${rows}&page=${page}`
-}
-if (searchMode === 'tags') {
-	endPoint = `http://api.thenounproject.com/collection/${collectionSlug}/icons?limit=${rows}&page=${page}`
+	endPoint = `http://api.thenounproject.com/icons/${alfy.input.replace(/\s/, '-')}?limit=${rows}&page=${page}`
+} else {
+	endPoint = `http://api.thenounproject.com/collection/${collection}/icons?limit=${rows}&page=${page}`
 }
 
 const oauth = oAuth({
@@ -53,7 +67,7 @@ got(url, {
 		item.subtitle = `Hit ↵ to go 'noun project' documentation and get theire`
 		item.arg = 'https://api.thenounproject.com/getting_started.html#creating-an-api-key'
 		alfy.output([item.getProperties()])
-	} else if (/<p>No icons found for term/.test(error.body)) {
+	} else if (/<p>No icons found for term/.test(error.body) && page <= 1) {
 		const item = new Render('not found this icon',
 			'title', 'subtitle', 'autocomplete', 'valid')
 		item.title = `No icons found for term "${alfy.input}"`
@@ -67,7 +81,7 @@ got(url, {
 		item.title = 'Type something to search your awesome icon'
 		item.subtitle = 'use ↑↓ buttons to navigate through the pages to choose next or previous page'
 		alfy.output([item.getProperties()])
-	} else if (/<p>No icons/.test(error.body)) {
+	} else if (/<p>No icons/.test(error.body) && page > 1) {
 		const previous = parseInt(page, 10) - 1
 		const item = new Render('the end of icons list',
 			'title', 'subtitle', 'arg', 'variables')
@@ -78,6 +92,25 @@ got(url, {
 			currentSearch: alfy.input,
 			action: 'flipping',
 			page: previous
+		}
+		alfy.output([item.getProperties()])
+	} else if (/<p>No icons found for collection/.test(error.body) && page <= 1) {
+		let subtitleArg
+		if (searchMode === 'by slug') {
+			subtitleArg = 'by ID'
+		} else {
+			subtitleArg = 'by slug'
+		}
+		const item = new Render('not found by tag',
+			'title', 'subtitle', 'autocomplete', 'valid', 'variables', 'icon')
+		item.title = `No icons found for collection by tag "${collectionObj.slug}" using '${searchMode === 'by id' ? 'ID' : 'Slug'}'`
+		item.subtitle = `hit ↵ and try search ${subtitleArg}`
+		item.autocomplete = ''
+		item.valid = true
+		item.icon = './icons/refresh.png'
+		item.variables = {
+			action: 'flipping',
+			searchMode: searchMode === 'by id' ? 'by slug' : 'by id'
 		}
 		alfy.output([item.getProperties()])
 	} else {
