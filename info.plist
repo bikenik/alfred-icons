@@ -443,25 +443,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>json</key>
-				<string>{
-  "alfredworkflow" : {
-    "arg" : "",
-    "config" : {
-    }
-  }
-}</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.json</string>
-			<key>uid</key>
-			<string>2DC0BF10-A6D6-4B4B-A08E-E46E1B5EF007</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>inputstring</key>
 				<string>{var:searchMode}</string>
 				<key>matchcasesensitive</key>
@@ -475,6 +456,25 @@
 			<string>alfred.workflow.utility.filter</string>
 			<key>uid</key>
 			<string>7AC899A2-49E4-4A6D-AE42-86DB51C0D7A4</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>json</key>
+				<string>{
+  "alfredworkflow" : {
+    "arg" : "",
+    "config" : {
+    }
+  }
+}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.json</string>
+			<key>uid</key>
+			<string>2DC0BF10-A6D6-4B4B-A08E-E46E1B5EF007</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -690,12 +690,12 @@ SEARCH BY TAGS</string>
 		<key>key</key>
 		<string></string>
 		<key>rows</key>
-		<string>13</string>
+		<string>12</string>
 		<key>secret</key>
 		<string></string>
 	</dict>
 	<key>version</key>
-	<string>1.0.0</string>
+	<string>1.0.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/bikeNik/alfred-icons#readme</string>
 </dict>
