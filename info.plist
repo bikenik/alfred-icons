@@ -443,25 +443,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>inputstring</key>
-				<string>{var:searchMode}</string>
-				<key>matchcasesensitive</key>
-				<true/>
-				<key>matchmode</key>
-				<integer>0</integer>
-				<key>matchstring</key>
-				<string>collection</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.filter</string>
-			<key>uid</key>
-			<string>7AC899A2-49E4-4A6D-AE42-86DB51C0D7A4</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>json</key>
 				<string>{
   "alfredworkflow" : {
@@ -475,6 +456,25 @@
 			<string>alfred.workflow.utility.json</string>
 			<key>uid</key>
 			<string>2DC0BF10-A6D6-4B4B-A08E-E46E1B5EF007</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>inputstring</key>
+				<string>{var:searchMode}</string>
+				<key>matchcasesensitive</key>
+				<true/>
+				<key>matchmode</key>
+				<integer>0</integer>
+				<key>matchstring</key>
+				<string>collection</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.filter</string>
+			<key>uid</key>
+			<string>7AC899A2-49E4-4A6D-AE42-86DB51C0D7A4</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -567,7 +567,7 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string></string>
+	<string>the 'rows' is number of search results from the API. You can change this optionally depending on your count of visible result items in Alfred options﻿﻿.</string>
 	<key>uidata</key>
 	<dict>
 		<key>13B3BCA7-4E05-4DC1-9600-B82C6B0995FA</key>
@@ -695,7 +695,7 @@ SEARCH BY TAGS</string>
 		<string></string>
 	</dict>
 	<key>version</key>
-	<string>1.0.1</string>
+	<string>1.0.2</string>
 	<key>webaddress</key>
 	<string>https://github.com/bikeNik/alfred-icons#readme</string>
 </dict>

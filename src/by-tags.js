@@ -3,7 +3,7 @@ const alfy = require('alfy')
 
 const tags = JSON.parse(process.env.tags)
 
-const items = alfy.matches('', tags, 'slug')
+const items = alfy.inputMatches(tags, 'slug')
 	.map(x => ({
 		title: x.slug,
 		icon: {path: './icons/tags.png'},
