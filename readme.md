@@ -14,6 +14,8 @@ $ npm install --global alfred-icons
 
 *Requires [Node.js](https://nodejs.org) 7.6+ and the Alfred [Powerpack](https://www.alfredapp.com/powerpack/).*
 
+**You need an API Key to use this workflow:** Get the [API key](https://api.thenounproject.com/getting_started.html#creating-an-api-key) from the Noun Project for free.
+
 
 ## Usage
 
