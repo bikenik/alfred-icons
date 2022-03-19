@@ -14,6 +14,13 @@ $ npm install --global alfred-icons
 
 *Requires [Node.js](https://nodejs.org) 7.6+ and the Alfred [Powerpack](https://www.alfredapp.com/powerpack/).*
 
+## Configure API Key
+[Create an API Key on the Noun Project](https://api.thenounproject.com/getting_started.html#creating-an-api-key)
+
+Then click on the workflow "Configure workflow and variables"-icon and define the key and secret variable.
+
+![screenshot](https://user-images.githubusercontent.com/8931007/109387054-45ebb180-78ff-11eb-896f-f72792068f98.png)
+
 
 ## Usage
 
