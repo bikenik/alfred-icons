@@ -8,8 +8,8 @@ The main purpose of this workflow is a choice of the icon, by tags, and query wo
 
 ## Install
 
-```
-$ npm install --global alfred-icons
+```sh
+npm install --global alfred-icons
 ```
 
 *Requires [Node.js](https://nodejs.org) 7.6+ and the Alfred [Powerpack](https://www.alfredapp.com/powerpack/).*
